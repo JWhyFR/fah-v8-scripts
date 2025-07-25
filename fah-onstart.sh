@@ -4,6 +4,7 @@
   cd /root
 
   echo "**** install runtime packages ****" && \
+  apt-get clean && \
   apt-get update && \
   apt-get install -y \
     bzip2 \
