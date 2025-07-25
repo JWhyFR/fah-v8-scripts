@@ -11,13 +11,11 @@ echo "**** apt-get clean/update ****" && \
   apt-get update
 
 echo "**** install runtime packages ****" && \
-  apt-get clean && \
-  apt-get update && \
   apt-get install -y \
     bzip2 \
     intel-opencl-icd \
-    libexpat1 \
-  
+    libexpat1
+    
 echo "**** install runtime packages 2****" && \
   apt-get install -y \
     screen \
