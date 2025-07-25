@@ -3,15 +3,26 @@
   echo '**** ensuring we are in the /root  directory ****'
   cd /root
 
-  echo "**** install runtime packages ****" && \
+echo "**** setting date ****" && \
+  date -s "$(wget -qSO- --max-redirect=0 google.com 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
+
+echo "**** apt-get clean/update ****" && \
+  apt-get clean && \
+  apt-get update
+
+echo "**** install runtime packages ****" && \
   apt-get clean && \
   apt-get update && \
   apt-get install -y \
     bzip2 \
     intel-opencl-icd \
     libexpat1 \
+  
+echo "**** install runtime packages 2****" && \
     screen \
-    pipx && \
+    pipx
+  
+echo "**** install runtime packages 3****" && \
   pipx install lufah && \
    mkdir /var/log/fah-client && \
   echo "**** install foldingathome ****" && \
