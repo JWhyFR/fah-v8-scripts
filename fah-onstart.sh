@@ -19,6 +19,7 @@ echo "**** install runtime packages ****" && \
     libexpat1 \
   
 echo "**** install runtime packages 2****" && \
+  apt-get install -y \
     screen \
     pipx
   
