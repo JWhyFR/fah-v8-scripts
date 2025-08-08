@@ -1,19 +1,28 @@
 # onstart script for Folding@Home v8 running on vast.ai
 
-  echo '**** ensuring we are in the /root  directory ****'
-  cd /root
+echo '**** ensuring we are in the /root  directory ****'
+cd /root
 
-  echo "**** install runtime packages ****" && \
-  apt-get update && \
+echo "**** apt-get clean/update ****" && \
+  apt-get clean && \
+  apt-get update
+
+echo "**** install runtime packages 1 ****" && \
   apt-get install -y \
     bzip2 \
     intel-opencl-icd \
-    libexpat1 \
+    libexpat1
+    
+echo "**** install runtime packages 2 ****" && \
+  apt-get install -y \
     screen \
-    pipx && \
+    pipx
+  
+echo "**** install runtime packages 3 ****" && \
   pipx install lufah && \
-   mkdir /var/log/fah-client && \
-  echo "**** install foldingathome ****" && \
+   mkdir /var/log/fah-client
+   
+echo "**** install foldingathome ****" && \
   download_url="https://download.foldingathome.org/releases/public/fah-client/debian-10-64bit/release/fah-client_8.4.9-64bit-release.tar.bz2" && \
   curl -o \
     /tmp/fah.tar.bz2 -L \
@@ -27,7 +36,7 @@
     /var/tmp/* \
     /var/log/*
 
-FAH_MACHINE_NAME="Vast.ai-$VAST_CONTAINERLABEL"
+FAH_MACHINE_NAME="V.ai-$VAST_CONTAINERLABEL"
 if [[ -v FAH_USERNAME ]]; then
     echo "FAH username specified; Updating machine name"
     FAH_MACHINE_NAME=$FAH_MACHINE_NAME-$FAH_USERNAME
@@ -36,7 +45,7 @@ fi
 # make the current environment variables available to a standard shell 
 env >> /etc/environment;
 
-echo "Starting fah-clinent"
+echo "Starting fah-client"
 screen -dm ./fah-client --log=/var/log/fah-client/log.txt --log-rotate-dir=/var/log/fah-client/ --account-token=$FAH_ACCOUNT_TOKEN --machine-name=$FAH_MACHINE_NAME --cpus 0
 
 echo "Waiting 10 seconds for fah-client to start..."
