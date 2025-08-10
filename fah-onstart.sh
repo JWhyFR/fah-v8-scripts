@@ -63,7 +63,7 @@ do
         if [[ $FAH_CURRENT_USERNAME != "\"$FAH_USERNAME\"" ]]
         then
             echo "FAH username specified.  Updating FAH config"
-            .local/bin/lufah -a / config user $FAH_USERNAME
+            .local/bin/lufah -a / config user $FAH_USERNAME --force
             echo "---"
         fi
     fi
