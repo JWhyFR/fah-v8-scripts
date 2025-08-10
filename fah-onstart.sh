@@ -90,7 +90,7 @@ do
 
     if [[ -v FAH_PK ]]; then
         FAH_CURRENT_PK=$(.local/bin/lufah -a / config key)
-        if [[ $FAH_CURRENT_PK != "\"$FAH_PK\"" ]]
+        if [[ $FAH_CURRENT_PK != "$FAH_PK" ]]
         then
             echo "FAH projectkey specified.  Updating FAH config"
             .local/bin/lufah -a / config key $FAH_PK
