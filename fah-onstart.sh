@@ -88,6 +88,16 @@ do
         fi
     fi
 
+    if [[ -v FAH_PK ]]; then
+        FAH_CURRENT_PK=$(.local/bin/lufah -a / config key)
+        if [[ $FAH_CURRENT_PK != "\"$FAH_PK\"" ]]
+        then
+            echo "FAH projectkey specified.  Updating FAH config"
+            .local/bin/lufah -a / config key $FAH_PK
+            echo "---"
+        fi
+    fi
+
 
     if [[ -v FAH_AUTOSTART && $FAH_AUTOSTART = "true" ]]; then
         echo "FAH autostart enabled."
