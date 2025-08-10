@@ -37,10 +37,10 @@ echo "**** install foldingathome ****" && \
     /var/log/*
 
 FAH_MACHINE_NAME="V.ai-$VAST_CONTAINERLABEL"
-if [[ -v FAH_USERNAME ]]; then
-    echo "FAH username specified; Updating machine name"
-    FAH_MACHINE_NAME=$FAH_MACHINE_NAME-$FAH_USERNAME
-fi
+## if [[ -v FAH_USERNAME ]]; then
+##    echo "FAH username specified; Updating machine name"
+##    FAH_MACHINE_NAME=$FAH_MACHINE_NAME-$FAH_USERNAME
+## fi
 
 # make the current environment variables available to a standard shell 
 env >> /etc/environment;
