@@ -93,7 +93,7 @@ do
         if [[ $FAH_CURRENT_CAUSE != "\"$FAH_CAUSE\"" ]]
         then
             echo "FAH cause specified.  Updating FAH config"
-            .local/bin/lufah -a / config key $FAH_CAUSE
+            .local/bin/lufah -a / config cause $FAH_CAUSE
             echo "---"
         fi
     fi
@@ -103,7 +103,7 @@ do
         if [[ $FAH_CURRENT_BETA != "\"$FAH_BETA\"" ]]
         then
             echo "FAH beta specified.  Updating FAH config"
-            .local/bin/lufah -a / config key $FAH_BETA
+            .local/bin/lufah -a / config beta $FAH_BETA
             echo "---"
         fi
     fi
