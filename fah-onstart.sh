@@ -100,7 +100,7 @@ do
 
     if [[ -v FAH_BETA ]]; then
         FAH_CURRENT_BETA=$(.local/bin/lufah -a / config beta)
-        if [[ $FAH_CURRENT_BETA != "\"$FAH_BETA\"" ]]
+        if [[ $FAH_CURRENT_BETA != "$FAH_BETA" ]]
         then
             echo "FAH beta specified.  Updating FAH config"
             .local/bin/lufah -a / config beta $FAH_BETA
