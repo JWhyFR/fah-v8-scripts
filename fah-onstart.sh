@@ -88,6 +88,26 @@ do
         fi
     fi
 
+    if [[ -v FAH_CAUSE ]]; then
+        FAH_CURRENT_CAUSE=$(.local/bin/lufah -a / config cause)
+        if [[ $FAH_CURRENT_CAUSE != "\"$FAH_CAUSE\"" ]]
+        then
+            echo "FAH cause specified.  Updating FAH config"
+            .local/bin/lufah -a / config key $FAH_CAUSE
+            echo "---"
+        fi
+    fi
+
+    if [[ -v FAH_BETA ]]; then
+        FAH_CURRENT_BETA=$(.local/bin/lufah -a / config beta)
+        if [[ $FAH_CURRENT_BETA != "\"$FAH_BETA\"" ]]
+        then
+            echo "FAH beta specified.  Updating FAH config"
+            .local/bin/lufah -a / config key $FAH_BETA
+            echo "---"
+        fi
+    fi
+    
     if [[ -v FAH_PK ]]; then
         FAH_CURRENT_PK=$(.local/bin/lufah -a / config key)
         if [[ $FAH_CURRENT_PK != "$FAH_PK" ]]
